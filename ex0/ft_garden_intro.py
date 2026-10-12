@@ -10,5 +10,5 @@ def ft_garden_intro() -> None:
     print("=== End of Program ===")
 
 
-if  __name__ == "__main__":
+if __name__ == "__main__":
     ft_garden_intro()
