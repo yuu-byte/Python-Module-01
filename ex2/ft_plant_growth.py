@@ -4,7 +4,8 @@ class Plant:
     days_old: int
 
     def show(self) -> None:
-        print(f"{self.name}: {self.height:.1f}cm, {self.days_old} days old")
+        print(f"{self.name}: "
+              f"{round(self.height, 1)}cm, {self.days_old} days old")
 
     def grow(self) -> None:
         self.height += 0.8
@@ -28,4 +29,4 @@ if __name__ == "__main__":
         rose.age()
         rose.show()
     total_growth = rose.height - start_height
-    print(f"Growth this week: {total_growth:.1f}cm")
+    print(f"Growth this week: {round(total_growth, 1)}cm")
