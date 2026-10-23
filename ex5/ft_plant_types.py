@@ -15,7 +15,6 @@ class Plant:
     def set_height(self, height: float) -> None:
         if height >= 0:
             self._height = height
-            # print(f"Height updated: {round(self._height, 1)}cm")
         else:
             print(f"{self._name}: Error, height can't be negative")
             print("Height update rejected")
@@ -23,7 +22,6 @@ class Plant:
     def set_age(self, days_old: int) -> None:
         if days_old >= 0:
             self._days_old = days_old
-            # print(f"Age updated: {self._days_old} days")
         else:
             print(f"{self._name}: Error, age can't be negative")
             print("Age update rejected")
@@ -88,11 +86,11 @@ class Vegetable(Plant):
                  days_old: int, harvest_season: str) -> None:
         super().__init__(name, height, days_old)
         self._harvest_season = harvest_season
-        self._nutritional_value = 0.0
+        self._nutritional_value = 0
 
     def grow(self, grow_height: float) -> None:
         super().grow(grow_height)
-        self._nutritional_value += grow_height / 42.0
+        self._nutritional_value += 1
 
     def age(self, past_days: int) -> None:
         super().age(past_days)
@@ -101,7 +99,7 @@ class Vegetable(Plant):
     def show(self) -> None:
         super().show()
         print(f" Harvest season: {self._harvest_season}")
-        print(f" Nutritional value: {self._nutritional_value:g}")
+        print(f" Nutritional value: {self._nutritional_value}")
 
 
 if __name__ == "__main__":

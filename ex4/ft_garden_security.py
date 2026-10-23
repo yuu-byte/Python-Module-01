@@ -37,22 +37,22 @@ class Plant:
     def get_age(self) -> int:
         return self._days_old
 
-    # def show(self) -> None:
-    #     print(f"Created: {self._name}: "
-    #           f"{round(self._height, 1)}cm, {self._days_old} days old")
+    def show(self) -> None:
+        print(f"{self._name}: "
+              f"{round(self._height, 1)}cm, {self._days_old} days old")
 
-    # def grow(self) -> None:
-    #     self._height += 0.8
+    def grow(self) -> None:
+        self._height += 0.8
 
-    # def age(self) -> None:
-    #     self._days_old += 1
+    def age(self) -> None:
+        self._days_old += 1
 
 
 if __name__ == "__main__":
     print("=== Garden Security System ===")
     rose = Plant("Rose", 15.0, 10)
-    print(f"Plant created: {rose.get_name()}: "
-          f"{round(rose.get_height(), 1)}cm, {rose.get_age()} days old")
+    print("Plant created: ", end="")
+    rose.show()
     print("")
 
     rose.set_height(25.0)
@@ -63,5 +63,5 @@ if __name__ == "__main__":
     rose.set_age(-42)
     print("")
 
-    print(f"Current state: {rose.get_name()}: "
-          f"{round(rose.get_height(), 1)}cm, {rose.get_age()} days old")
+    print("Current state: ", end="")
+    rose.show()

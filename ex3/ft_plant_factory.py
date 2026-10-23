@@ -5,7 +5,7 @@ class Plant:
         self.days_old = days_old
 
     def show(self) -> None:
-        print(f"Created: {self.name}: "
+        print(f"{self.name}: "
               f"{round(self.height, 1)}cm, {self.days_old} days old")
 
     def grow(self) -> None:
@@ -23,8 +23,13 @@ if __name__ == "__main__":
     sunflower = Plant("Sunflower", 80.0, 45)
     fern = Plant("Fern", 15.0, 120)
 
+    print("Created: ", end="")
     rose.show()
+    print("Created: ", end="")
     oak.show()
+    print("Created: ", end="")
     cactus.show()
+    print("Created: ", end="")
     sunflower.show()
+    print("Created: ", end="")
     fern.show()
