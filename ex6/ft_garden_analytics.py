@@ -15,7 +15,8 @@ class Plant:
             self._show_count += 1
 
         def show_stats(self) -> None:
-            print(f" Stats: {self._grow_count} grow, {self._age_count} age, {self._show_count} show")
+            print(f" Stats: {self._grow_count} grow, "
+                  f"{self._age_count} age, {self._show_count} show")
 
     def __init__(self, name: str, height: float, days_old: int) -> None:
         self._name = name
@@ -72,12 +73,12 @@ class Plant:
     def show_stats(self) -> None:
         self._stats.show_stats()
 
-	@staticmethod
-	def is_over_year(days: int) -> bool:
+    @staticmethod
+    def is_over_year(days: int) -> bool:
         return days > 365
 
-	@classmethod
-	def create_anonymous(cls) -> "Plant":
+    @classmethod
+    def create_anonymous(cls) -> "Plant":
         return cls("Unknown plant", 0.0, 0)
 
 
@@ -128,6 +129,8 @@ class Tree(Plant):
             super().show_stats()
             print(f" {self._produce_shade_count} shade")
 
+    _stats: TreeStatistics
+
     def __init__(self, name: str, height: float,
                  days_old: int, trunk_diameter: float) -> None:
         super().__init__(name, height, days_old)
@@ -143,8 +146,6 @@ class Tree(Plant):
     def show(self) -> None:
         super().show()
         print(f" Trunk diameter: {round(self._trunk_diameter, 1)}cm")
-
-
 
 
 class Vegetable(Plant):
@@ -167,7 +168,56 @@ class Vegetable(Plant):
         print(f" Harvest season: {self._harvest_season}")
         print(f" Nutritional value: {self._nutritional_value:g}")
 
+
 def display_statistics(plant: Plant) -> None:
     plant.show_stats()
 
+
 if __name__ == "__main__":
+    print("=== Garden statistics ===")
+    print("=== Check year-old")
+    print(f"Is 30 days more than a year? -> {Plant.is_over_year(30)}")
+    print(f"Is 400 days more than a year? -> {Plant.is_over_year(400)}")
+    print()
+
+    print("===Flower")
+    rose = Flower("Rose", 15.0, 10, "red")
+    rose.show()
+    print("[statistics for Rose]")
+    rose.show_stats()
+    print("[asking the rose to grow and bloom]")
+    rose.grow(8.0)
+    rose.bloom()
+    rose.show()
+    print("[statistics for Rose]")
+    rose.show_stats()
+    print()
+
+    print("===Tree")
+    oak = Tree("Oak", 200.0, 365, 5.0)
+    oak.show()
+    print("[statistics for Oak]")
+    oak.show_stats()
+    print("[asking the oak to produce shade]")
+    oak.produce_shade()
+    print("[statistics for Oak]")
+    oak.show_stats()
+    print()
+
+    print("===Seed")
+    sunflower = Seed("Sunflower", 80.0, 45, "yellow")
+    sunflower.show()
+    print("[make sunflower grow, age and bloom]")
+    sunflower.grow(30.0)
+    sunflower.age(20)
+    sunflower.bloom()
+    sunflower.show()
+    print("[statistics for Sunflower]")
+    sunflower.show_stats()
+    print()
+
+    print("===Anonymous")
+    unknown = Plant.create_anonymous()
+    unknown.show()
+    print("[statistics for Unknown plant]")
+    unknown.show_stats()
